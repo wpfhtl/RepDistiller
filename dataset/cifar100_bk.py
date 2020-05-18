@@ -36,30 +36,7 @@ def get_data_folder():
     return data_folder
 
 
-class CIFAR100BackCompat(datasets.CIFAR100):
-    """
-    CIFAR100Instance+Sample Dataset
-    """
-
-    @property
-    def train_labels(self):
-        return self.targets
-
-    @property
-    def test_labels(self):
-        return self.targets
-
-    @property
-    def train_data(self):
-        return self.data
-
-    @property
-    def test_data(self):
-        return self.data
-
-
-
-class CIFAR100Instance(CIFAR100BackCompat):
+class CIFAR100Instance(datasets.CIFAR100):
     """CIFAR100Instance Dataset.
     """
     def __getitem__(self, index):
@@ -129,7 +106,7 @@ def get_cifar100_dataloaders(batch_size=128, num_workers=8, is_instance=False):
         return train_loader, test_loader
 
 
-class CIFAR100InstanceSample(CIFAR100BackCompat):
+class CIFAR100InstanceSample(datasets.CIFAR100):
     """
     CIFAR100Instance+Sample Dataset
     """
